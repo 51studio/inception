@@ -6,7 +6,7 @@ COPY bison-2.7-4.el7.x86_64.rpm /opt
 #inception
 RUN yum -y install wget git gcc gcc-c++ make cmake openssl-devel ncurses-devel m4\
     && cd /opt \  
-    && git clone https://github.com/hhyo/inception.git \
+    && git clone https://github.com/51studio/inception.git \
     && rpm -i /opt/inception/dockersrc/bison-2.7-4.el7.x86_64.rpm \  
     && mv /opt/inception/dockersrc/inc.cnf /etc \
     && cd inception \
@@ -23,4 +23,4 @@ ENV LC_ALL zh_CN.utf8 #设置环境变量
 EXPOSE 6669
 
 #start service
-ENTRYPOINT nohup /opt/inception/debug/mysql/bin/Inception --defaults-file=/etc/inc.cnf && bash
+ENTRYPOINT /opt/inception/debug/mysql/bin/Inception --defaults-file=/etc/inc.cnf && bash
